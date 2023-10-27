@@ -56,19 +56,19 @@ const Products: FunctionComponent<ProductProps> = () => {
     setData(rangePro)
   }
 
-  const updateProductList = (updatedProduct:any) => {
-    const existingProductIndex = data.findIndex((product:any) => product.id === updatedProduct.id);
-  
+  const updateProductList = (updatedProduct: any) => {
+    const existingProductIndex = data.findIndex((product: any) => product.id === updatedProduct.id);
+
     if (existingProductIndex !== -1) {
       const newData = [...data];
       newData[existingProductIndex] = updatedProduct;
       newData.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.createdAt).getTime());
       setData(newData);
     } else {
-      setData((prevData:any) => [updatedProduct, ...prevData]);
+      setData((prevData: any) => [updatedProduct, ...prevData]);
     }
   };
-  
+
   useEffect(() => {
     const products = actions.getAllProduct();
     if (Array.isArray(products)) {
@@ -90,7 +90,7 @@ const Products: FunctionComponent<ProductProps> = () => {
           onDataUpdate={handleDataUpdate}
           getPrices={handleGetPrice}
           sortPrices={handleSortPrice}
-          sortNewProduct={updateProductList }
+          sortNewProduct={updateProductList}
         />
         <ListProducts data={data} />
       </div>
