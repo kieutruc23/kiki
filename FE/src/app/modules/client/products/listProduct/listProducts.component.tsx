@@ -12,7 +12,7 @@ interface ListProductProps {
 }
 
 const ListProducts: FunctionComponent<ListProductProps> = ({ data }) => {
-  let keyword = new URLSearchParams(location.search).get('q')
+  let keyword = new URLSearchParams(location.search).get('q') ?? ''
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -23,7 +23,7 @@ const ListProducts: FunctionComponent<ListProductProps> = ({ data }) => {
     <div css={cssListProducts} className='w-[100%]'>
       <div className='grid grid-cols-4 gap-10 p-10'>
         {data.map((item: any, index: any) => {
-          if (item?.name.toLowerCase().includes(keyword?.toLowerCase() || '')) {
+          if (item && item.name && item.name.toLowerCase().includes(keyword.toLowerCase())) {
             return (
               <Link to={`/detail/${item._id}`} key={index}>
                 <ItemProduct itemProduct={item} />

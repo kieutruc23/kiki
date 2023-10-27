@@ -18,6 +18,7 @@ interface SidebarProductsProps {
   onDataUpdate: any
   getPrices: any
   sortPrices: any
+  sortNewProduct :any
 }
 
 type MenuItem = Required<MenuProps>['items'][number]
@@ -41,7 +42,7 @@ function getItem(
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
 
 const SidebarProducts: FunctionComponent<SidebarProductsProps> = (props) => {
-  const { data, onDataUpdate, getPrices, sortPrices } = props
+  const { data, onDataUpdate, getPrices, sortPrices, sortNewProduct } = props
   const {
     data: { categorys },
     actions
@@ -58,6 +59,9 @@ const SidebarProducts: FunctionComponent<SidebarProductsProps> = (props) => {
   }
   const sortPrice = (type: string) => {
     sortPrices(type)
+  }
+  const sortNews = (type: string) => {
+    sortNewProduct(type)
   }
   const items: MenuItem[] = [
     getItem(
@@ -115,7 +119,7 @@ const SidebarProducts: FunctionComponent<SidebarProductsProps> = (props) => {
       <GrFormFilter />,
       [
         getItem(<div className='sideBar-sort'>Mặc định</div>, 'sort1'),
-        getItem(<div className='sideBar-sort'>Mới nhất</div>, 'sort2', <MdOutlineAutorenew />),
+        getItem(<div className='sideBar-sort' onClick={() => sortNews('new')}>Mới nhất</div>, 'sort2', <MdOutlineAutorenew />),
         getItem(<div className='sideBar-sort'>Được mua nhiều nhất</div>, 'sort3', <ImStarEmpty />),
         getItem(<div className='sideBar-sort'>Được yêu thích nhất</div>, 'sort4', <IoIosHeartEmpty />),
         getItem(
