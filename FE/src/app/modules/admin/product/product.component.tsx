@@ -67,7 +67,7 @@ const ProductManagemnet = () => {
               render: (text: any, record: any, index: any) => {
                 return (
                   <div>
-                    {dataProduct[index]?.listQuantityRemain?.map((item: any, index: any) => (
+                    {record?.listQuantityRemain?.map((item: any, index: any) => (
                       <div className='flex items-center h-[29px] w-[80px]'>
                         <p className='mt-0 mb-3 truncate'>{item[itemKey]}</p>
                       </div>
