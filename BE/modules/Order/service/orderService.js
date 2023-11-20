@@ -40,17 +40,25 @@ export const addOder = async (req) => {
 }
 export const updateOrder = async (req) => {
     const { orderStatus, orderId } = req.body
-
-    const order = await Order.findOne({
-        _id: orderId,
-    })
-
+    const order = await Order.findOne({ _id: orderId })
     order.orderStatus = orderStatus
     await order.save()
+    if (orderStatus === 'huỷ đơn') {
+        for (let i = 0; i < order.productOrder.length; i++) {
+            const productOrder = order.productOrder[i];
+            const productDetail = await ProductModel.findById(productOrder.product);
+            const quantityCancelled = productOrder.quantityOrder.quantity;
+            const findObjectRemain = productDetail.listQuantityRemain.find(
+                (item) => item.nameColor === productOrder.quantityOrder.nameColor &&
+                    item.nameSize === productOrder.quantityOrder.nameSize
+            );
+            findObjectRemain.quantity += quantityCancelled;
+            await productDetail.save();
+        }
+    }
 
     return order
 }
-
 export const getAllOrders = async (req) => {
     const orders = await Order.find({
         user: req.user.id,
