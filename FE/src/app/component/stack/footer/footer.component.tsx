@@ -15,14 +15,15 @@ const FooterComponent: FunctionComponent<FooterComponentProps> = () => {
         <div className='column-one'>
           <div className='logo flex justify-around gap-9 pb-6'>
             <div>
-              <img className='w-[96px] h-[26px] ' src="https://res-console.cloudinary.com/db4xq5lij/media_explorer_thumbnails/eb301bdd3222ee349aca0f34715a6581/detailed" alt="" />
+              <img className=' w-[270px] 'src="https://scontent.fhan14-1.fna.fbcdn.net/v/t39.30808-6/404263307_357890920233334_4206441658182925266_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=CIe-0hEhr1YAX9eSH-4&_nc_ht=scontent.fhan14-1.fna&oh=00_AfBhxKIHBbEZq4gmG7rKuokBaGaBIoTNrhkRZ_u8GAA-xg&oe=655FAA1F "
+            alt='' />
             </div>
-            <div>
+            {/* <div>
               <img className='w-[61px] h-[20px]' src="https://images.dmca.com/Badges/dmca_protected_16_120.png?ID=0cfdeac4-6e7f-4fca-941f-57a0a0962777" alt="" />
             </div>
             <div>
               <img className='w-[70px] h-[26px]' src="https://pubcdn.ivymoda.com/ivy2/images/img-congthuong.png" alt="" />
-            </div>
+            </div> */}
           </div>
 
           <div className='text-content'>
